@@ -1,7 +1,6 @@
 #
 # Windows Forensics and Incident Response Tool (Final + LNK + FIM)
-# Author: GPT Assistant (Ethical Hacker)
-# 
+#
 
 # Build output directory
 $TimeStamp = Get-Date -Format "yyyyMMdd_HHmmss"
