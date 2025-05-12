@@ -53,7 +53,7 @@ Some antivirus, EDR, or endpoint protection platforms may block or interfere wit
 - Copying `.lnk` files
 - Reading from registry for FIM
 
-**To prevent issues:**
+To prevent issues:
 - Temporarily disable real-time protection (if safe to do so)
 - OR whitelist the script or PowerShell execution path
 
