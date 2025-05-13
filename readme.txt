@@ -61,7 +61,8 @@ To prevent issues:
 
 -- How to Run
 
-1. Open PowerShell **as Administrator**
+1. Open PowerShell *as Administrator*
+2.Create C:\WFIR_Logs (Before running the script)
 2. Navigate to the script's directory
 3. Run:
 
