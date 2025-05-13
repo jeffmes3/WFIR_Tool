@@ -8,23 +8,20 @@ A modular, PowerShell-based tool designed for blue teams, incident responders, a
 
 This script collects forensic artifacts and system state across multiple vectors:
 
-| Module                     | Description                                                                 |
-|----------------------------|-----------------------------------------------------------------------------|
-| Network Info               | Active connections, open ports, routing table, ARP cache                    |
-| Wireless Profiles          | Saved Wi-Fi profiles and plaintext keys (if accessible)                     |
-| Stored Credentials         | Credentials stored using `cmdkey`                                           |
-| Registry Autostarts        | Persistence registry keys for all users                                     |
-| Startup Folder Files       | Contents of global/user startup folders                                     |
-| Alternate Data Streams     | Detects hidden NTFS streams via `dir /r`                                    |
-| Installed Applications     | AppX packages and traditional programs                                      |
-| Network Interfaces         | IP/DNS adapter configurations from registry                                 |
-| Malware Artifacts          | Collects `Prefetch`, `Amcache.hve`, and `ntuser.dat`                        |
-| LNK Files                  | Collects shortcut files from `Recent`, `Office`, `AutoDestinations`         |
-| FIM Snapshot               | Dumps key registry paths and file metadata (SYSTEM, SOFTWARE, winevt logs)  |
-| Auto-Zip                   | Compresses output folder for safe storage or exfil                          |
-
----
-
+1. Network Information (`netstat`, `route`, `arp`)
+2. Wireless Profiles & Stored Credentials
+3. Registry-Based Persistence Keys
+4. User & Global Startup Folders
+5. Alternate Data Streams Detection
+6. Installed Applications (AppX + Win32)
+7. Network Interfaces from Registry
+8. Malware & Threat Indicators:.  -( `Prefetch`, `Amcache.hve`, `ntuser.dat`)
+9. LNK File Collection (Recent, Office, Destinations)
+10. File & Registry Integrity Snapshot (FIM-style)
+11  Windows Event Logs Export (.evtx)
+12.Parsed Event Metadata (CSV summaries)
+13.Auto-Zips All Output for Archival/Transfer
+14.`MasterLog.txt` for Auditable Actions
 
 
 All collected data is saved in:output - C:\WFIR_Logs\WFIR_<TIMESTAMP>\
@@ -53,7 +50,7 @@ Some antivirus, EDR, or endpoint protection platforms may block or interfere wit
 - Copying `.lnk` files
 - Reading from registry for FIM
 
-To prevent issues:
+**To prevent issues:**
 - Temporarily disable real-time protection (if safe to do so)
 - OR whitelist the script or PowerShell execution path
 
@@ -61,17 +58,15 @@ To prevent issues:
 
 -- How to Run
 
-1. Open PowerShell *as Administrator*
-2. Create Folder C:\WFIR_Logs (Before running the script)
+1. Open PowerShell **as Administrator**
 2. Navigate to the script's directory
 3. Run:
 
 ```powershell
-./DFIR-Tool.ps1
+.\DFIR-Tool.ps1
 
 WinPrefetchView is a small utility that reads the Prefetch files stored in your system and displays the information stored in them. By looking in these files, you can learn which files every application is using, and which files are loaded on Windows boot.
 https://www.nirsoft.net/utils/win_prefetch_view.html
 
 # License
 Free for educational, training, and professional IR use. Attribution appreciated.
-
