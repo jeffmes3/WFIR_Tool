@@ -8,20 +8,21 @@ A modular, PowerShell-based tool designed for blue teams, incident responders, a
 
 This script collects forensic artifacts and system state across multiple vectors:
 
-1. Network Information (`netstat`, `route`, `arp`)
-2. Wireless Profiles & Stored Credentials
-3. Registry-Based Persistence Keys
-4. User & Global Startup Folders
-5. Alternate Data Streams Detection
-6. Installed Applications (AppX + Win32)
-7. Network Interfaces from Registry
-8. Malware & Threat Indicators:.  -( `Prefetch`, `Amcache.hve`, `ntuser.dat`)
-9. LNK File Collection (Recent, Office, Destinations)
-10. File & Registry Integrity Snapshot (FIM-style)
-11  Windows Event Logs Export (.evtx)
-12.Parsed Event Metadata (CSV summaries)
-13.Auto-Zips All Output for Archival/Transfer
-14.`MasterLog.txt` for Auditable Actions
+1. Network Info	netstat, arp, route, interfaces
+2. Wireless Profiles	Extracted with plaintext
+3. Stored Credentials	cmdkey /list
+4. Registry Autostarts	Run, RunOnce, etc.
+5. Startup Folders	User/global startup files
+6. Malware Artifacts	Prefetch, Amcache, ntuser.dat
+7. LNK Files	From Recent/Office folders
+8. Alternate Data Streams	dir /r
+9. FIM Snapshot	Critical file & registry metadata
+10 Event Logs (.evtx)	From System, Security, etc.
+11. Parsed Event Metadata	.csv summaries (EventID, TimeCreated, etc.)
+12. PowerShell Command History	From consoleHost_history.txt
+13. Zip Output	Final zipped report folder
+14. Master Log	Action log with timestamps
+
 
 
 All collected data is saved in:output - C:\WFIR_Logs\WFIR_<TIMESTAMP>\

@@ -1,7 +1,7 @@
-# 
-# DFIR Tool - Windows Incident Response Collector
-# Author: JEFFMES3
-# 
+# ===============================================
+# DFIR Tool - Windows Incident Response Collector (Enhanced)
+# Author: GPT Assistant (Ethical Hacker)
+# ===============================================
 
 $TimeStamp = Get-Date -Format "yyyyMMdd_HHmmss"
 $BaseDir = "C:\WFIR_Logs"
@@ -141,7 +141,7 @@ function Collect-EventLogs {
         $safeName = ($log -replace "/", "-") + ".evtx"
         $dest = Join-Path $eventOut $safeName
         wevtutil epl "$log" "$dest"
-        Write-Log "Exported $log"
+        Write-Log "Exported ${log}"
     }
     Write-Log "Event log export complete."
 }
@@ -158,12 +158,24 @@ function Parse-EventMetadata {
             $safeName = ($log -replace "/", "-") + "_metadata.csv"
             $csvPath = Join-Path $parsedOut $safeName
             $events | Export-Csv -Path $csvPath -NoTypeInformation
-            Write-Log "Parsed metadata from $log log."
+            Write-Log "Parsed metadata from ${log}"
         } catch {
             Write-Log "Failed to parse ${log}: $_" "ERROR"
         }
     }
     Write-Log "Event metadata parsing complete."
+}
+
+function Collect-PowerShellHistory {
+    Write-Log "Collecting PowerShell command history..."
+    $historyPath = "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\consoleHost_history.txt"
+    $dest = "$OutputDir\powershell_history.txt"
+    if (Test-Path $historyPath) {
+        Copy-Item $historyPath -Destination $dest -Force
+        Write-Log "PowerShell history copied."
+    } else {
+        Write-Log "No PowerShell history found at expected path." "WARN"
+    }
 }
 
 function Zip-Results {
@@ -188,6 +200,7 @@ function Show-MainMenu {
     Write-Host "B. Run FIM Snapshot"
     Write-Host "C. Export Event Logs"
     Write-Host "D. Parse Event Log Metadata"
+    Write-Host "E. Collect PowerShell History"
     Write-Host "0. Run All & ZIP"
     Write-Host "X. Exit`n"
     $choice = Read-Host "Enter your choice"
@@ -205,6 +218,7 @@ function Show-MainMenu {
         "B" { Run-FIMScan }
         "C" { Collect-EventLogs }
         "D" { Parse-EventMetadata }
+        "E" { Collect-PowerShellHistory }
         "0" {
             Get-NetworkInfo
             Get-WirelessCreds
@@ -219,6 +233,7 @@ function Show-MainMenu {
             Run-FIMScan
             Collect-EventLogs
             Parse-EventMetadata
+            Collect-PowerShellHistory
             Zip-Results
         }
         "X" { Write-Log "User exited."; exit }
