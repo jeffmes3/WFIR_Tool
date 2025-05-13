@@ -69,7 +69,7 @@ To prevent issues:
 ```powershell
 ./DFIR-Tool.ps1
 
-nPrefetchView is a small utility that reads the Prefetch files stored in your system and displays the information stored in them. By looking in these files, you can learn which files every application is using, and which files are loaded on Windows boot.
+WinPrefetchView is a small utility that reads the Prefetch files stored in your system and displays the information stored in them. By looking in these files, you can learn which files every application is using, and which files are loaded on Windows boot.
 https://www.nirsoft.net/utils/win_prefetch_view.html
 
 # License
