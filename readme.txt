@@ -62,9 +62,9 @@ To prevent issues:
 -- How to Run
 
 1. Open PowerShell *as Administrator*
-2.Create C:\WFIR_Logs (Before running the script)
+2. Create Folder C:\WFIR_Logs (Before running the script)
 2. Navigate to the script's directory
 3. Run:
 
 ```powershell
-.\DFIR-Tool.ps1
+./DFIR-Tool.ps1
