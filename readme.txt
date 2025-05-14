@@ -59,12 +59,14 @@ Some antivirus, EDR, or endpoint protection platforms may block or interfere wit
 
 -- How to Run
 
-1. Open PowerShell **as Administrator**
+1. Open PowerShell *as Administrator*
+2.Create a folder in c drive "C:\WFIR_Logs"
 2. Navigate to the script's directory
-3. Run:
+3.`powershell "as administrator"
+./DFIR-Tool.ps1
+4.Run:
 
-```powershell
-.\DFIR-Tool.ps1
+
 
 WinPrefetchView is a small utility that reads the Prefetch files stored in your system and displays the information stored in them. By looking in these files, you can learn which files every application is using, and which files are loaded on Windows boot.
 https://www.nirsoft.net/utils/win_prefetch_view.html
