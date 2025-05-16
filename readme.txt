@@ -21,7 +21,8 @@ This script collects forensic artifacts and system state across multiple vectors
 11. Parsed Event Metadata	.csv summaries (EventID, TimeCreated, etc.)
 12. PowerShell Command History	From consoleHost_history.txt
 13. Zip Output	Final zipped report folder
-14. Master Log	Action log with timestamps
+14.SMB Share info
+15. Master Log	Action log with timestamps
 
 
 
